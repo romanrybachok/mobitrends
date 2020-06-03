@@ -9,9 +9,9 @@
 
 ## Run commute command
 
-php artisan calculateCommute {homeCoords} {workCoords} {timeCalculation=1} {scoreTransformation=1}'
+php artisan calculateCommute {homeCoords} {workCoords} {timeCalculation=1} {scoreTransformation=1}
 
-where homeCoords, workCoords are GPS coordinates with latitude and longitude
+where homeCoords, workCoords are GPS coordinates with latitude and longitude (separated by comma)
 
 timeCalculation (optional) is one of algorithms choosen [1,2,3]
 scoreTransformation (optional) is score calculation algorithm [1,2,3]
