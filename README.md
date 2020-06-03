@@ -1,24 +1,34 @@
-# Lumen PHP Framework
+# Install
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+1. composer update
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+2. copy env.example to .env
 
-## Official Documentation
+3. Set GOOGLE_API_KEY in .env
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
 
-## Contributing
+## Run commute command
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+php artisan calculateCommute {homeCoords} {workCoords} {timeCalculation=1} {scoreTransformation=1}'
 
-## Security Vulnerabilities
+where homeCoords, workCoords are GPS coordinates with latitude and longitude
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+timeCalculation (optional) is one of algorithms choosen [1,2,3]
+scoreTransformation (optional) is score calculation algorithm [1,2,3]
 
-## License
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Example run:
+
+php artisan calculateCommute 49.5483334,25.5276294 49.5711916,25.5526451 1 1
+
+php artisan calculateCommute 49.8386942,23.9071718 49.8326046,23.8721529 2
+
+
+## Adding new time calculation algorithms
+
+For this purpose you should extend abstact class AbstractCommuter and implement 
+its getCommutingDuration method
+
+## Adding new score transformation algorithms
+
+For this purpose you should and new transformation score in getScore method.
